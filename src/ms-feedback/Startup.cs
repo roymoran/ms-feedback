@@ -30,6 +30,7 @@ namespace ms_feedback
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddEntityFrameworkSqlServer();
             services.AddMvc();
             services.AddDbContext<UserFeedbackContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }

@@ -9,6 +9,9 @@ namespace ms_feedback.Data
 {
     public class UserFeedbackContext : DbContext
     {
+        public UserFeedbackContext(DbContextOptions<UserFeedbackContext> options) : base(options)
+        {
+        }
         public DbSet<User> Users { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
     }
