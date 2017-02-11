@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #3C8CFF;
 }
 
 /* Wrapping element */
@@ -43,3 +44,46 @@ select {
 textarea {
     width: 100%;
 }
+
+.btn-submit-feedback{
+  font-size: 1.2em;
+    height: 40px;
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 1) !important;
+  opacity: 1;
+  border: 1px solid #FFFFFF;
+  color: #3C8CFF !important;
+
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  
+  /* CSS Transition */  
+  -webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -moz-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -ms-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -o-transition: background .2s ease-in-out, border .2s ease-in-out;
+  transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+.btn-submit-feedback:hover{
+  font-size: 1.2em;
+    height: 40px;
+  margin-bottom: 15px;
+  background: rgba(232, 241, 255, 1) !important;
+  opacity: 1;
+  border: 1px solid #FFFFFF;
+  color: #3C8CFF !important;
+
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  
+  /* CSS Transition */  
+  -webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -moz-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -ms-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -o-transition: background .2s ease-in-out, border .2s ease-in-out;
+  transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+

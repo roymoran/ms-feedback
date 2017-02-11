@@ -10,7 +10,7 @@
 }
 <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-        <h4  class ="text-left">Leave @ViewData["UserName"] some feedback:</h4>
+        <h4 class="text-left" style="color: white;">Leave @ViewData["UserName"] some feedback:</h4>
         <form asp-controller="Feedbacks" asp-action="Create" method="post">
             <!-- Input and Submit elements -->
             <div class="form-group hide">
@@ -33,7 +33,7 @@
                     <input asp-for="Anonymous" class="form-control" />
                     <span asp-validation-for="Anonymous" class="text-danger"></span>
             </div>
-            <button type="submit"style="float: right;">Send Feedback</button>
+            <button type="submit" style="float: right;" class="btn-submit-feedback">Send Feedback</button>
             <div class="form-group">
                 <label asp-for="UserID" class="col-md-2 control-label hide"></label>
                 <input asp-for="UserID" class="form-control" placeholder="User FK" />
