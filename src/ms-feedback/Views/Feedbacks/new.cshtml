@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="FeedbackText" class="col-md-2 control-label hide"></label>
-                    <textarea asp-for="FeedbackText" class="form-control" rows="8" cols="10" placeholder="Help them grow by providing some feedback."> </textarea>
+                    <textarea asp-for="FeedbackText" class="form-control" rows="8" style="width: 100%;"placeholder="Help them grow by providing some feedback."> </textarea>
                     <span asp-validation-for="FeedbackText" class="text-danger"></span>
             </div>
             <div class="form-group hide">
@@ -33,12 +33,12 @@
                     <input asp-for="Anonymous" class="form-control" />
                     <span asp-validation-for="Anonymous" class="text-danger"></span>
             </div>
+            <button type="submit"style="float: right;">Send Feedback</button>
             <div class="form-group">
                 <label asp-for="UserID" class="col-md-2 control-label hide"></label>
-                    <input asp-for="UserID" class="form-control" placeholder="User FK" />
-                    <span asp-validation-for="UserID" class="text-danger"></span>
+                <input asp-for="UserID" class="form-control" placeholder="User FK" />
+                <span asp-validation-for="UserID" class="text-danger"></span>
             </div>
-            <button type="submit">Send Feedback</button>
         </form>
     </div>
 </div>
