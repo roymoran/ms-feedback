@@ -23,9 +23,11 @@ namespace ms_feedback.Controllers
         public IActionResult New(int id)
         {
             var user = _context.Users.Find(1);
+            var feedback = new Feedback();
+            feedback.UserID = user.ID;
             ViewData["UserName"] = user.FullName;
             
-            return View();
+            return View(feedback);
         }
 
         [HttpPost]
