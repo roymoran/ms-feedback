@@ -36,3 +36,11 @@ textarea {
     display: none
   }
 }
+
+.hide {
+    display: none;
+}
+
+textarea {
+  width: 100%;
+}
