@@ -33,7 +33,6 @@
                 <input asp-for="Anonymous" class="form-control"/>
                 <span asp-validation-for="Anonymous" class="text-danger"></span>
             </div>
-            @Html.HiddenFor(model => model.UserID)
             <button type="submit" style="float: right;" class="btn-submit-feedback">Send Feedback</button>
             <div class="form-group hide">
                 <label asp-for="UserID" class="col-md-2 control-label hide"></label>
