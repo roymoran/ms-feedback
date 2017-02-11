@@ -1,7 +1,52 @@
-﻿@*
+﻿@model ms_feedback.Models.Feedback
+
+@*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
 @{
     ViewData["Title"] = "Leave Feedback";
 }
+
+<div class ="col-sm-6 col-sm-offset-3">
+    <h2>Leave Feedback for @ViewData["UserName"] </h2>
+    <form asp-controller="Feedbacks" asp-action="Create" method="post">
+        <!-- Input and Submit elements -->
+        <div class="form-group">
+            <label asp-for="SenderName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="SenderName" class="form-control" placeholder="Your Name" />
+                <span asp-validation-for="SenderName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FeedbackText" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FeedbackText" class="form-control" placeholder="Help them grow by providing some feedback." />
+                <span asp-validation-for="FeedbackText" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DeliveryDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DeliveryDate" class="form-control" placeholder="Deliver this feedback when?" />
+                <span asp-validation-for="DeliveryDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Anonymous" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Anonymous" class="form-control" />
+                <span asp-validation-for="Anonymous" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="UserID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="UserID" class="form-control" placeholder="User FK" />
+                <span asp-validation-for="UserID" class="text-danger"></span>
+            </div>
+        </div>
+        <button type="submit">Send Feedback</button>
+    </form>
+</div>

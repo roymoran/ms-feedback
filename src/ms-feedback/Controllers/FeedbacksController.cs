@@ -20,14 +20,21 @@ namespace ms_feedback.Controllers
         }
 
         // GET: /<controller>/
-        public IActionResult New()
+        public IActionResult New(int id)
         {
+            var user = _context.Users.Find(1);
+            ViewData["UserName"] = user.FullName;
+            
             return View();
         }
 
-        public IActionResult Create()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Feedback feedback)
         {
-            return View();
+            _context.Add(feedback);
+            _context.SaveChanges();
+            return RedirectToAction("New");
         }
     }
 }
