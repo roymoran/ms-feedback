@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using ms_feedback.Data;
 using Microsoft.AspNetCore.Mvc;
 using ms_feedback.Models;
+using System.Security.Cryptography;
+using Microsoft.AspNet.Cryptography.KeyDerivation;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,18 +23,33 @@ namespace ms_feedback.Controllers
         // GET: /<controller>/
         public IActionResult New()
         {
-            var user = new User();
-            user.ID = Guid.NewGuid();
-            //Guid g;
-            // Create and display the value of two GUIDs.
-            //g = Guid.NewGuid();
-            //Console.WriteLine(g);
-            //Console.WriteLine(Guid.NewGuid());
-            return View(user);
+            return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(User user)
         {
+            // generate a 128-bit salt using a secure PRNG
+            byte[] salt = new byte[128 / 8];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(salt);
+            }
+
+            // derive a 256-bit subkey (use HMACSHA1 with 10,000 iterations)
+            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                password: user.Password,
+                salt: salt,
+                prf: KeyDerivationPrf.HMACSHA1,
+                iterationCount: 10000,
+                numBytesRequested: 256 / 8));
+
+            user.PasswordHashed = hashed;
+            user.PasswordSalt = salt;
+            user.ID = Guid.NewGuid();
+            user.Password = "";
+            user.PasswordConfirmed = "";
             _context.Add(user);
             _context.SaveChanges();
             return RedirectToAction("New");

@@ -33,9 +33,21 @@
                 <input asp-for="Anonymous" class="form-control" />
                 <span asp-validation-for="Anonymous" class="text-danger"></span>
             </div>
-            <p class="" style="float: left; color: white;"><a style="color: white;" href="/Users/New">Create your own instant feedback tool.</a></p>
+            <p class="" style="float: left; color: white;"><a style="color: white;" onclick="mpLead()" href="/Users/New">Create your own instant feedback tool.</a></p>
             <button type="submit" style="float: right;" class="btn-submit-feedback">Send Feedback</button>
             @Html.HiddenFor(model => model.UserID)
         </form>
     </div>
 </div>
+<script>
+    uid = document.getElementById('UserID').value;
+    mixpanel.track("Feedback Page", {
+        "User ID": uid
+    });
+
+    function mpLead() {
+        mixpanel.track("To Create Feedback Tool Page", {
+            "User ID": uid
+        });
+    }
+</script>
