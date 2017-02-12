@@ -21,12 +21,21 @@ namespace ms_feedback.Controllers
         // GET: /<controller>/
         public IActionResult New()
         {
-            return View();
+            var user = new User();
+            user.ID = Guid.NewGuid();
+            //Guid g;
+            // Create and display the value of two GUIDs.
+            //g = Guid.NewGuid();
+            //Console.WriteLine(g);
+            //Console.WriteLine(Guid.NewGuid());
+            return View(user);
         }
 
-        public IActionResult Create()
+        public IActionResult Create(User user)
         {
-            return View();
+            _context.Add(user);
+            _context.SaveChanges();
+            return RedirectToAction("New");
         }
 
         public IActionResult Edit()

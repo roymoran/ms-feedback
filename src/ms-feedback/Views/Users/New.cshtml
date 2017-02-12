@@ -1,4 +1,6 @@
-﻿@*
+﻿@model ms_feedback.Models.User
+
+@*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
@@ -7,4 +9,32 @@
     Layout = "_FeedbackLayout";
 }
 
-<div class ="col-sm-12">This is the registration page.</div>
+<div class="row">
+    <h2 class="text-center" style="color: white; padding-bottom:15px;">Create Your Feedback Tool</h2>
+    <div class="col-sm-4 col-sm-offset-4">
+        <form asp-controller="Users" asp-action="Create" method="post">
+            <!-- Input and Submit elements -->
+            <div class="form-group text-center">
+                <label asp-for="FullName" class="col-md-2 control-label hide"></label>
+                <input asp-for="FullName" class="create-form" placeholder="Full Name" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group text-center">
+                <label asp-for="Email" class="col-md-2 control-label hide"></label>
+                <input asp-for="Email" class="create-form" placeholder="Organization Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group text-center">
+                <label asp-for="PasswordHash" class="col-md-2 control-label hide"></label>
+                <input asp-for="PasswordHash" class="create-form" placeholder="Password" />
+                <span asp-validation-for="PasswordHash" class="text-danger"></span>
+            </div>
+            <div class="form-group text-center">
+                <label asp-for="PasswordHash" class="col-md-2 control-label hide"></label>
+                <input asp-for="PasswordHash" class="create-form" placeholder="Confirm Password" />
+                <span asp-validation-for="PasswordHash" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn-submit-create">Create</button>
+        </form>
+    </div>
+</div>

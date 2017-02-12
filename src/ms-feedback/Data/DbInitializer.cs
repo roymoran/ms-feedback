@@ -17,10 +17,10 @@ namespace ms_feedback.Data
             {
                 return;   // DB has been seeded
             }
-
+            var user_guid = Guid.NewGuid();
             var users = new User[]
             {
-                new User { FullName = "Roy Moran", Email = "Roy.Moran@Microsoft.com", PasswordHash = "ExamplePassHash"}
+                new User {ID = user_guid, FullName = "Roy Moran", Email = "Roy.Moran@Microsoft.com", PasswordHash = "ExamplePassHash"}
             };
 
             foreach (User u in users)
@@ -31,9 +31,9 @@ namespace ms_feedback.Data
 
             var feedbacks = new Feedback[]
             {
-                new Feedback { UserID = 1, FeedbackText = "Great work on the bot project.", Anonymous = true, DeliveryDate = DateTime.Now},
-                new Feedback { UserID = 1, FeedbackText = "Make sure you ask more questions on the calls.", Anonymous = false, SenderName = "Korey F.", DeliveryDate = DateTime.Now},
-                new Feedback { UserID = 1, FeedbackText = "Awesome work on the project", Anonymous = true, DeliveryDate = DateTime.Now}
+                new Feedback { UserID = user_guid, FeedbackText = "Great work on the bot project.", Anonymous = true, DeliveryDate = DateTime.Now},
+                new Feedback { UserID = user_guid, FeedbackText = "Make sure you ask more questions on the calls.", Anonymous = false, SenderName = "Korey F.", DeliveryDate = DateTime.Now},
+                new Feedback { UserID = user_guid, FeedbackText = "Awesome work on the project", Anonymous = true, DeliveryDate = DateTime.Now}
             };
 
             foreach (Feedback f in feedbacks)

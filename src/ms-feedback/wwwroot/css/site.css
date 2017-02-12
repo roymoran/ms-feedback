@@ -47,7 +47,7 @@ textarea {
 
 .btn-submit-feedback{
   font-size: 1.2em;
-    height: 40px;
+  height: 40px;
   margin-bottom: 15px;
   background: rgba(255, 255, 255, 1) !important;
   opacity: 1;
@@ -87,3 +87,55 @@ textarea {
   transition: background .2s ease-in-out, border .2s ease-in-out;
 }
 
+.btn-submit-create{
+    font-size: 1.2em;
+  height: 40px;
+  width:100%;
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 1) !important;
+  opacity: 1;
+  border: 1px solid #FFFFFF;
+  color: #3C8CFF !important;
+
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  
+  /* CSS Transition */  
+  -webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -moz-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -ms-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -o-transition: background .2s ease-in-out, border .2s ease-in-out;
+  transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+.btn-submit-create:hover{
+  font-size: 1.2em;
+  height: 40px;
+  width:100%;
+  margin-bottom: 15px;
+  background: rgba(232, 241, 255, 1) !important;
+  opacity: 1;
+  border: 1px solid #FFFFFF;
+  color: #3C8CFF !important;
+
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  
+  /* CSS Transition */  
+  -webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -moz-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -ms-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -o-transition: background .2s ease-in-out, border .2s ease-in-out;
+  transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+.create-form{
+    height: 40px;
+  width: 100%;
+  font-size: 1.2em;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  padding-left: 10px;
+}

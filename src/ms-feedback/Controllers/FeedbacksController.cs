@@ -20,11 +20,17 @@ namespace ms_feedback.Controllers
         }
 
         // GET: /<controller>/
-        public IActionResult New(int id)
+        public IActionResult New(Guid? uid)
         {
-            var user = _context.Users.Find(1);
+            //var guid_uid = Guid.Parse(uid);
+           if(uid == null)
+            {
+                return View();
+            }
+            var user = _context.Users.Find(uid);
+           
             var feedback = new Feedback();
-            feedback.UserID = user.ID;
+            feedback.UserID = (Guid)uid;
             ViewData["UserName"] = user.FullName;
             
             return View(feedback);

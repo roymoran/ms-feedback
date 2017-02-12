@@ -15,31 +15,27 @@
             <!-- Input and Submit elements -->
             <div class="form-group hide">
                 <label asp-for="SenderName" class="col-md-2 control-label hide"></label>
-                    <input asp-for="SenderName" class="form-control" placeholder="Your Name" />
-                    <span asp-validation-for="SenderName" class="text-danger"></span>
+                <input asp-for="SenderName" class="form-control" placeholder="Your Name" />
+                <span asp-validation-for="SenderName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FeedbackText" class="col-md-2 control-label hide"></label>
-                    <textarea asp-for="FeedbackText" class="form-control" rows="8" style="width: 100%;"placeholder="Help them grow by providing some feedback."> </textarea>
-                    <span asp-validation-for="FeedbackText" class="text-danger"></span>
+                <textarea asp-for="FeedbackText" class="form-control" rows="8" style="width: 100%;" placeholder="Help them grow by providing some feedback."> </textarea>
+                <span asp-validation-for="FeedbackText" class="text-danger"></span>
             </div>
             <div class="form-group hide">
                 <label asp-for="DeliveryDate" class="col-md-2 control-label hide"></label>
-                    <input asp-for="DeliveryDate" class="form-control" placeholder="Deliver this feedback when?" />
-                    <span asp-validation-for="DeliveryDate" class="text-danger"></span>
+                <input asp-for="DeliveryDate" class="form-control" placeholder="Deliver this feedback when?" />
+                <span asp-validation-for="DeliveryDate" class="text-danger"></span>
             </div>
             <div class="form-group hide">
                 <label asp-for="Anonymous" class="col-md-2 control-label hide"></label>
-                <input asp-for="Anonymous" class="form-control"/>
+                <input asp-for="Anonymous" class="form-control" />
                 <span asp-validation-for="Anonymous" class="text-danger"></span>
             </div>
             <p class="" style="float: left; color: white;"><a style="color: white;" href="/Users/New">Create your own instant feedback tool.</a></p>
             <button type="submit" style="float: right;" class="btn-submit-feedback">Send Feedback</button>
-            <div class="form-group hide">
-                <label asp-for="UserID" class="col-md-2 control-label hide"></label>
-                <input asp-for="UserID" class="form-control" placeholder="User FK" />
-                <span asp-validation-for="UserID" class="text-danger"></span>
-            </div>
+            @Html.HiddenFor(model => model.UserID)
         </form>
     </div>
 </div>

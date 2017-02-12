@@ -15,7 +15,7 @@ namespace ms_feedback.Models
         public string FeedbackText { get; set; }
         public DateTime DeliveryDate { get; set; }
         public bool Anonymous { get; set; }
-        public int UserID { get; set; }
+        public System.Guid UserID { get; set; }
         public User User { get; set; }
         //public string UserId { get; set; }
     }
