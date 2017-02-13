@@ -20,7 +20,7 @@ namespace ms_feedback.Data
             var user_guid = Guid.NewGuid();
             var users = new User[]
             {
-                new User {ID = user_guid, FullName = "Roy Moran", Email = "Roy.Moran@Microsoft.com", PasswordHashed = "ExamplePassHash"}
+                new User {ID = user_guid, FullName = "Roy Moran", Email = "roy_moran1993@yahoo.com"}
             };
 
             foreach (User u in users)

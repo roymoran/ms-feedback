@@ -7,7 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using ms_feedback.Models;
 using System.Security.Cryptography;
 using Microsoft.AspNet.Cryptography.KeyDerivation;
-
+using System.Net;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
+using System.Text;
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ms_feedback.Controllers
@@ -28,10 +32,15 @@ namespace ms_feedback.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(User user)
+        public async Task<IActionResult> Create(User user)
         {
+            //Should add unqiueness constraint on email
+            //Should lowercase email before saving
+
+            //commenting out password since this is being removed.
+            //There currently isn't a reason for registered users to login
             // generate a 128-bit salt using a secure PRNG
-            byte[] salt = new byte[128 / 8];
+            /*byte[] salt = new byte[128 / 8];
             using (var rng = RandomNumberGenerator.Create())
             {
                 rng.GetBytes(salt);
@@ -47,11 +56,30 @@ namespace ms_feedback.Controllers
 
             user.PasswordHashed = hashed;
             user.PasswordSalt = salt;
-            user.ID = Guid.NewGuid();
             user.Password = "";
-            user.PasswordConfirmed = "";
+            user.PasswordConfirmed = "";*/
+            user.ID = Guid.NewGuid();
             _context.Add(user);
             _context.SaveChanges();
+           
+            // trigger email with unique feedback link and message
+            using (var client = new HttpClient())
+            {
+                var values = new Dictionary<string, string>
+                {
+                    { "email", user.Email },
+                    { "feedback_link", "http://localhost:4765/Feedbacks/New?uid=" + user.ID.ToString()},
+                    { "first_name", user.FullName.Split(' ')[0]}
+                };
+
+                string output = JsonConvert.SerializeObject(values);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var response = await client.PostAsync("https://prod-10.westus.logic.azure.com:443/workflows/f1a5b87088a74e1db8903969b1d83d35/triggers/request/run?api-version=2016-06-01&sp=%2Ftriggers%2Frequest%2Frun&sv=1.0&sig=xLeP76cY5b6Gu8cJdzOov39frS_bzIB84NENhhQQV5k", new StringContent(output, Encoding.UTF8, "application/json"));
+
+                var responseString = await response.Content.ReadAsStringAsync();
+            }
+
             return RedirectToAction("New");
         }
 
