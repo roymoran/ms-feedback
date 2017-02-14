@@ -68,14 +68,14 @@ namespace ms_feedback.Controllers
                 var values = new Dictionary<string, string>
                 {
                     { "email", user.Email },
-                    { "feedback_link", "http://localhost:4765/Feedbacks/New?uid=" + user.ID.ToString()},
+                    { "feedback_link", "http://smartfeedback.azurewebsites.net/Feedbacks/New?uid=" + user.ID.ToString()},
                     { "first_name", user.FullName.Split(' ')[0]}
                 };
 
                 string output = JsonConvert.SerializeObject(values);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var response = await client.PostAsync("https://prod-10.westus.logic.azure.com:443/workflows/f1a5b87088a74e1db8903969b1d83d35/triggers/request/run?api-version=2016-06-01&sp=%2Ftriggers%2Frequest%2Frun&sv=1.0&sig=xLeP76cY5b6Gu8cJdzOov39frS_bzIB84NENhhQQV5k", new StringContent(output, Encoding.UTF8, "application/json"));
+                var response = await client.PostAsync("https://prod-23.westus2.logic.azure.com:443/workflows/20f19b0072834a63a0f1ed8aa7316944/triggers/request/run?api-version=2016-06-01&sp=%2Ftriggers%2Frequest%2Frun&sv=1.0&sig=wYCQdY1g8RpFu8GEWcz8W_KyPc1-a530BolouqqwAK8", new StringContent(output, Encoding.UTF8, "application/json"));
 
                 var responseString = await response.Content.ReadAsStringAsync();
             }
