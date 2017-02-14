@@ -58,6 +58,10 @@ namespace ms_feedback.Controllers
             user.PasswordSalt = salt;
             user.Password = "";
             user.PasswordConfirmed = "";*/
+            if (user.Email == null || user.FullName == null)
+            {
+                return RedirectToAction("New");
+            }
             user.ID = Guid.NewGuid();
             _context.Add(user);
             _context.SaveChanges();
