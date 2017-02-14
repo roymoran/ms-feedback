@@ -43,6 +43,10 @@ namespace ms_feedback.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Feedback feedback)
         {
+            if (feedback.FeedbackText == null)
+            {
+                return RedirectToAction("New", new { uid = feedback.UserID });
+            }
             _context.Add(feedback);
             _context.SaveChanges();
 
@@ -65,7 +69,7 @@ namespace ms_feedback.Controllers
                 var responseString = await response.Content.ReadAsStringAsync();
             }
 
-            return RedirectToAction("New");
+            return RedirectToAction("New", "Users");
         }
     }
 }
